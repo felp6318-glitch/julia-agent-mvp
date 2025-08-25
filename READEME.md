@@ -132,3 +132,34 @@ Este projeto é o MVP (Minimum Viable Product) de um agente de IA comercial cham
     -   **Resposta:** `{ "reply": "Resposta da Júlia" }`
 
     
+# Projeto Júlia - Agente de IA Comercial
+
+Este projeto é o MVP (Minimum Viable Product) de um agente de IA comercial chamado Júlia. O objetivo é criar um serviço modular e escalável.
+
+## Ambiente de Desenvolvimento
+
+-   Windows 10
+-   Node.js
+-   Visual Studio Code
+-   Nodemon para hot-reloading
+
+## Como Executar
+
+1.  Clone o repositório.
+2.  Instale as dependências:
+    ```bash
+    npm install
+    ```
+3.  Inicie o servidor em modo de desenvolvimento:
+    ```bash
+    npm run dev
+    ```
+4.  O servidor estará disponível em `http://localhost:3000`.
+
+## Rotas Disponíveis
+
+-   `GET /status`: Verifica a saúde do serviço.
+-   `GET /persona`: Retorna o objeto JSON com a persona completa da agente Júlia.
+-   `POST /chat`: Ponto de entrada para interagir com a agente. Requer um `sessionId` para manter o contexto da conversa.
+    -   **Corpo da Requisição:** `{ "sessionId": "id_unico_da_sessao", "message": "Sua mensagem aqui" }`
+    -   **Resposta:** `{ "reply": "Resposta da Júlia" }`
