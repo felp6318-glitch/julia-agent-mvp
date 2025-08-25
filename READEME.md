@@ -94,5 +94,9 @@ Este projeto é o MVP (Minimum Viable Product) de um agente de IA comercial cham
 ## Rotas Disponíveis
 
 -   `GET /status`: Verifica a saúde do serviço.
+-   `GET /persona`: Retorna o objeto JSON com a persona completa da agente Júlia.
+-   `POST /chat`: Ponto de entrada para interagir com a agente.
+    -   **Corpo da Requisição:** `{ "message": "Sua mensagem aqui" }`
+    -   **Resposta:** `{ "reply": "Resposta da Júlia" }`
 
 

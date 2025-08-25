@@ -1,13 +1,13 @@
-// Importa o módulo 'fs' (File System) para interagir com o sistema de arquivos
+// Importa o módulo 'fs' (File System)
 const fs = require('fs');
+// Importa o manipulador de mensagens do nosso novo fluxo de conversa
+const { handleMessage } = require('./flows/mainFlow');
 
-// Variável para armazenar os dados da persona em memória após o carregamento
+// Variável para armazenar os dados da persona em memória
 let persona = null;
 
 /**
- * Função de inicialização do Agente Júlia.
- * Lê o arquivo persona.json de forma síncrona, converte o conteúdo para um objeto JSON
- * e o armazena na variável 'persona'.
+ * Inicializa o agente, carregando a persona do arquivo JSON.
  */
 function init() {
   try {
@@ -16,18 +16,28 @@ function init() {
     console.log("Persona 'Júlia' carregada com sucesso.");
   } catch (error) {
     console.error("Erro ao carregar o arquivo persona.json:", error);
-    // Em caso de erro, o processo é encerrado para evitar que o agente opere sem sua persona.
     process.exit(1); 
   }
 }
 
 /**
- * Retorna o objeto da persona que foi carregado na memória.
- * @returns {object | null} O objeto da persona ou null se não foi carregado.
+ * Retorna o objeto da persona carregado.
+ * @returns {object | null}
  */
 function getPersona() {
   return persona;
 }
 
-// Exporta as funções para que possam ser usadas em outros arquivos
-module.exports = { init, getPersona };
+/**
+ * Processa a mensagem do usuário, delegando para o fluxo de conversa apropriado.
+ * @param {string} message - A mensagem do usuário.
+ * @returns {string} A resposta gerada pelo fluxo.
+ */
+function processMessage(message) {
+  // Por enquanto, apenas chama o handleMessage do fluxo principal.
+  const reply = handleMessage(message, persona);
+  return reply;
+}
+
+// Exporta as funções, incluindo a nova 'processMessage'
+module.exports = { init, getPersona, processMessage };

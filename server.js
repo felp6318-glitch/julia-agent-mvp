@@ -8,15 +8,15 @@ const agent = require('./agent');
 const app = express();
 const PORT = 3000;
 
-// Inicializa o agente (carrega a persona, etc.) ANTES de o servidor começar a ouvir
-agent.init();
-
 // Middleware para permitir que o servidor entenda JSON no corpo das requisições
+// É importante que esteja antes da definição das rotas que o utilizam.
 app.use(express.json());
+
+// Inicializa o agente (carrega a persona, etc.)
+agent.init();
 
 /**
  * Rota de Status (GET /status)
- * Usada para verificar se o servidor está online e respondendo.
  */
 app.get('/status', (req, res) => {
   res.status(200).json({ status: 'ok' });
@@ -24,12 +24,31 @@ app.get('/status', (req, res) => {
 
 /**
  * Rota da Persona (GET /persona)
- * Retorna o objeto completo da persona carregado pelo agente.
  */
 app.get('/persona', (req, res) => {
   const personaData = agent.getPersona();
   res.status(200).json(personaData);
 });
+
+/**
+ * Rota de Chat (POST /chat)
+ * Ponto de entrada para a conversa com o agente.
+ */
+app.post('/chat', (req, res) => {
+  const { message } = req.body;
+
+  // Validação básica para garantir que a mensagem foi enviada
+  if (!message) {
+    return res.status(400).json({ error: "O campo 'message' é obrigatório no corpo da requisição." });
+  }
+
+  // Processa a mensagem através do agente
+  const reply = agent.processMessage(message);
+
+  // Retorna a resposta do agente
+  res.status(200).json({ reply });
+});
+
 
 // Inicia o servidor na porta definida
 app.listen(PORT, () => {
