@@ -1,17 +1,28 @@
 {
-  "name": "v1-julia-agent",
+  "name": "projeto-julia",
   "version": "1.0.0",
-  "description": "",
+  "description": "Agente de IA Comercial 'Júlia'",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Felipe Araujo",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "nodemon": "^3.1.4"
-  }
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felp6318-glitch/julia-agent-mvp.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/felp6318-glitch/julia-agent-mvp/issues"
+  },
+  "homepage": "https://github.com/felp6318-glitch/julia-agent-mvp#readme"
 }

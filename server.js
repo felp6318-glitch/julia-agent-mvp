@@ -1,18 +1,27 @@
 // Importa o framework Express
-    const express = require('express');
+const express = require('express');
 
-    // Cria uma instância do aplicativo Express
-    const app = express();
+// Importa o nosso agente (ainda sem uso funcional nesta sprint)
+const agent = require('./agent');
 
-    // Define a porta em que o servidor vai rodar
-    const PORT = 3000;
+// Inicializa a aplicação Express
+const app = express();
+const PORT = 3000;
 
-    // Rota de teste inicial
-    app.get('/', (req, res) => {
-      res.send('Servidor da Júlia está no ar!');
-    });
+// Middleware para permitir que o servidor entenda JSON no corpo das requisições
+app.use(express.json());
 
-    // Inicia o servidor e o faz "escutar" na porta definida
-    app.listen(PORT, () => {
-      console.log(`🚀 Servidor da Júlia rodando em http://localhost:${PORT}`);
-    });
+/**
+ * Rota de Status (GET /status)
+ * Usada para verificar se o servidor está online e respondendo.
+ */
+app.get('/status', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+// Inicia o servidor na porta definida
+app.listen(PORT, () => {
+  console.log(`Servidor 'Júlia' rodando na porta ${PORT}`);
+  // Chama a função de inicialização do agente (atualmente vazia)
+  agent.init();
+});
