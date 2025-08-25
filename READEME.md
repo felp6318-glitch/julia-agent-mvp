@@ -64,3 +64,35 @@ Resumo e Organização
 
 1.  **Sua Organização:** Continue usando sua estrutura de pastas (`1-BIBLIOTECA`, `2-PROMPTS`, etc.) para seus documentos de planejamento. Isso é ótimo. O código do projeto (`server.js`, `flows/`, etc.) deve ficar na raiz, junto com o `README.md` e o `.gitignore`.
 2.  **Próximo Passo:** Após configurar o Git e criar o `README.md`, você está oficialmente pronto para iniciar o **Sprint 1**. O ambiente está preparado, seguro e documentado.
+
+****************************************************************************************************************
+# Sprint 1 - 
+Projeto Júlia - Agente de IA Comercial
+
+Este projeto é o MVP (Minimum Viable Product) de um agente de IA comercial chamado Júlia. O objetivo é criar um serviço modular e escalável.
+
+## Ambiente de Desenvolvimento
+
+-   Windows 10
+-   Node.js
+-   Visual Studio Code
+-   Nodemon para hot-reloading
+
+## Como Executar
+
+1.  Clone o repositório.
+2.  Instale as dependências:
+    ```bash
+    npm install
+    ```
+3.  Inicie o servidor em modo de desenvolvimento:
+    ```bash
+    npm run dev
+    ```
+4.  O servidor estará disponível em `http://localhost:3000`.
+
+## Rotas Disponíveis
+
+-   `GET /status`: Verifica a saúde do serviço.
+
+
